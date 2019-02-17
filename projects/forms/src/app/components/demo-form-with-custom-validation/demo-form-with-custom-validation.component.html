@@ -1,0 +1,45 @@
+<div class="ui raised segment demo-tile">
+    <h2 class="ui header">Demo Form: Sku</h2><span>(Custom Validation)</span>
+    <form [formGroup]="myForm"
+      class="ui form"
+      [class.error]="!myForm.valid && myForm.touched"
+      autocomplete="off"
+      (ngSubmit)="onSubmit(myForm.value)">
+    
+      <div class="field">
+        <label for="skuInput">SKU</label>
+        <input 
+          type="text"
+          id="skuInput"
+          placeholder="SKU"
+          [formControl]="sku">
+      </div>
+
+      <div *ngIf="!sku.valid" class="ui error message">
+        SKU is invalid
+      </div>
+
+      <div *ngIf="sku.hasError('required')" class="ui error message">
+        SKU has error
+      </div>
+
+      <div *ngIf="sku.hasError('required')" class="ui error message">
+        SKU must begin with <span>123</span>
+      </div>
+
+      <div *ngIf="!myForm.valid" 
+        class="ui error message">
+        Form is invalid
+      </div>
+
+      <button type="submit" class="ui button">Submit</button>
+    </form>
+  </div>
+
+  <ng-container *ngIf="false">
+    <pre>{{myForm.value | json}}</pre>
+    <pre>Sku Valid: {{sku.valid}}</pre>
+    <pre>Sku hasError(required): {{sku.hasError('required')}}</pre>
+    <pre>sku Errors: {{sku.errors | json}}</pre>
+    <pre>form.valid{{myForm.valid}}</pre>
+  </ng-container>

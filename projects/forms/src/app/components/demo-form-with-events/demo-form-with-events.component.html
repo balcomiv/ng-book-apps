@@ -1,0 +1,20 @@
+<div class="ui raised segment demo-tile">
+    <h2 class="ui header">Demo Form: Sku</h2><span>(Value Changes)</span>
+    <form [formGroup]="myForm"
+      class="ui form"
+      [class.error]="!myForm.valid && myForm.touched"
+      autocomplete="off"
+      (ngSubmit)="onSubmit(myForm.value)">
+    
+      <div class="field">
+        <label for="skuInput">SKU</label>
+        <input 
+          type="text"
+          id="skuInput"
+          placeholder="SKU"
+          [formControl]="sku">
+      </div>
+
+      <button type="submit" class="ui button">Submit</button>
+    </form>
+  </div>
